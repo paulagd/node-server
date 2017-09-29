@@ -7,4 +7,5 @@ module.exports = function(app){
     //petitions
     app.get('/sessions', sessions.findAll);
     app.get('/sessions/:id', sessions.findById);
+    app.get('/oxbuild_images/:id', sessions.getImageById);
 };

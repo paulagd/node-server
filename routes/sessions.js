@@ -6,6 +6,9 @@ var sessions = [
     {id:4 , title:"Building Modular Applications", speaker:"LAURA TAYLOR", time:"2:00pm", room:"Ballroom A", description: "Join Laura to learn different approaches to build modular JavaScript applications."}
 ];
 
+// const oxbuild_images = require('../ranks_best_oxford/all_souls_1.json');
+// const oxbuild_images = require('../oxbuild_images/all_souls_000000');
+
 exports.findAll = function (req, res, next) {
     res.send(sessions);
 };
@@ -13,4 +16,8 @@ exports.findAll = function (req, res, next) {
 exports.findById = function (req, res, next) {
     var id = req.params.id;
     res.send(sessions[id]);
+};
+
+exports.getImageById = function (req, res, next) {
+    res.sendFile(req.params.id,{"root":'./oxbuild_images'});
 };
