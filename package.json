@@ -12,13 +12,14 @@
   "homepage": "https://github.com/paulagd",
   "dependencies": {
     "body-parser": "^1.3.1",
+    "config": "^1.21.0",
     "cors": "^2.8.4",
     "express": "^4.4.5",
     "http": "0.0.0",
     "http-server": "^0.10.0",
+    "jsonfile": "^4.0.0",
     "method-override": "^2.0.2",
-    "morgan": "^1.9.0",
-    "config": "^1.21.0"
+    "morgan": "^1.9.0"
   },
   "scripts": {
     "start": "node index.js"

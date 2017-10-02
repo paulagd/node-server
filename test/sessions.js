@@ -1,3 +1,4 @@
+
 var sessions = [
     {id:0 , title:"Introduction to Ionic", speaker:"CHRISTOPHE COENRAETS", time:"9:40am", room:"Ballroom A", description: "In this session, you'll learn how to build a native-like mobile application using the Ionic Framework, AngularJS, and Cordova."},
     {id:1 , title:"AngularJS in 50 Minutes", speaker:"LISA SMITH", time:"10:10am", room:"Ballroom B", description: "In this session, you'll learn everything you need to know to start building next-gen JavaScript applications using AngularJS."},
@@ -16,8 +17,4 @@ exports.findAll = function (req, res, next) {
 exports.findById = function (req, res, next) {
     var id = req.params.id;
     res.send(sessions[id]);
-};
-
-exports.getImageById = function (req, res, next) {
-    res.sendFile(req.params.id,{"root":'./oxbuild_images'});
 };
