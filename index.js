@@ -7,6 +7,7 @@ const express       = require('express'),
     router          = require('./router');
     app = express();
 
+const execSentinela = require('./test_python').execSentinela;
 
 // app.use(methodOverride());      // simulate DELETE and PUT
 
@@ -31,10 +32,12 @@ app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 // app.use(bodyParser);
 
+execSentinela();
+setInterval(execSentinela, 10*60*1000); // cada 10 min.
+
+
 var server = app.listen(port);
 console.log('Server listening on: ' + port);
-
-
 
 router(app);
 
