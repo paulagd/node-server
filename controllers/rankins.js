@@ -1,26 +1,26 @@
-var jsonfile = require('jsonfile');
+const zerorpc = require("zerorpc");
 
 exports.getRankinById = function (req, res, next) {
-    res.sendFile(req.params.id,{"root":'./rankins'});
+    let id = req.params.id;  //id = aaa.json
+
+    getSingleRankin(id, function(data){
+        res.json(data);
+    });
 };
 
-exports.writeRankinById = function (req, res, next) {
-    var id = req.params.id;
-    var body = req.body;
-    // console.log("******** IDEE", id);
+getSingleRankin = function(id, callback){
 
-    // console.log("******** ARCHIVO ",body);
+    let client = new zerorpc.Client();
+    client.connect("tcp://127.0.0.1:4242");
+    client.invoke("postServer", id, function(error, res, more) {
+        if(error) {
+            console.log("ERROR IN CALLBACK");
+            callback(error);
+        }
 
-    var write_this = body;
-    var file_to_write_in = './rankins/'+ id ;
-
-    //si no existe el file_to_write_in lo crea. Si existe le añade lo que pongamos.Sin el flag a lo REESCRIBE
-    jsonfile.writeFile(file_to_write_in, write_this, {flag: 'a'}, function (err) {  //flag a is to write in an existing file
-        if(err)
-        next(err);
-
-        res.end();
+        if(!more) {
+            console.log("CALLBACK DONE");
+            callback(res);
+        }
     })
-
-    // res.sendFile(req.params.id,{"root":'./ranks_best_oxford'});
 };
