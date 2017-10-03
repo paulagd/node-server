@@ -1,37 +1,23 @@
-var spawn = require('child_process').spawn,
-    py    = spawn('python', ['test_without_api.py']),
-    dataString = '',
-    jsonfile = require('jsonfile');
-
+var zerorpc = require("zerorpc");
 
 exports.execSentinela = function(req, res, next) {
-    // Here we are saying that every time our node application receives data from the
-    // python process output stream(on 'data'), we want to convert that received data
-    // into a string and append it to the overall dataString.
-    var id = 'aaa.json';
+    var client = new zerorpc.Client();
+    client.connect("tcp://127.0.0.1:4242");
 
-    py.stdout.on('data', function(obj){
-      dataString += obj.toString();
+    // client.invoke("hello", "RPC", function(error, res, more) {
+    //     console.log(res);
+    // });
+    client.invoke("postServer", "aaa.json", function(error, res, more) {
+        if(error) {
+            console.error(error);
+        } else {
+            console.log("UPDATE:", res);
+        }
+
+        if(!more) {
+            console.log("Done.");
+        }
     });
 
-    //when it ends...
-    py.stdout.on('end', function(){
-      console.log('rank_data : ',dataString);
-      var write_this = dataString.trim();
-      var file_to_write_in = './rankins/'+ id ;
-
-      //si no existe el file_to_write_in lo crea. Si existe le añade lo que pongamos.Sin el flag a lo REESCRIBE
-      jsonfile.writeFile(file_to_write_in, write_this, {flag: 'a'}, function (err) {  //flag a is to write in an existing file
-          if(err)
-          console.log(err);
-
-          console.log("DONE");
-      })
-
-    });
-
-    // FIRST WRITE DATA X CONSOLE...
-    py.stdin.write(JSON.stringify(id));
-    py.stdin.end();
-
+    // client.close();
 }

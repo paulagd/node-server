@@ -29,11 +29,12 @@ if(process.env.NODE_ENV !== "test") {
 }
 
 app.use(cors());
-app.use(bodyParser.json({ type: '*/*' }));
+app.use(bodyParser.json({limit:1024*1024*20, type: '*/*' }));
+app.use(bodyParser.urlencoded({limit:1024*1024*20, extended: true}));
 // app.use(bodyParser);
 
 execSentinela();
-setInterval(execSentinela, 10*60*1000); // cada 10 min.
+setInterval(execSentinela, 0.5*60*1000); // cada 10 min.
 
 
 var server = app.listen(port);
