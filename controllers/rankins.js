@@ -1,5 +1,6 @@
 const zerorpc = require("zerorpc");
 
+//allow to get a rankin of an image from the client side
 exports.getRankinById = function (req, res, next) {
     let id = req.params.id;  //id = aaa.json
 

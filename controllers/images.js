@@ -1,3 +1,4 @@
+//allow to get an image from the client side
 exports.getImageById = function (req, res, next) {
     res.sendFile(req.params.id,{"root":'./oxbuild_images'});
 };
