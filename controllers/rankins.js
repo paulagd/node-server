@@ -2,17 +2,25 @@ const zerorpc = require("zerorpc");
 
 //allow to get a rankin of an image from the client side
 exports.getRankinById = function (req, res, next) {
-    let id = req.params.id;  //id = aaa.json
+    let id = req.params.id;  //id = aaa.json  --> si no ve amb .json al final es una url
+    let { dataset, url } = req.body;
 
-    getSingleRankin(id, function(data){
-        res.json(data);
-    });
+    if(url){
+      console.log("si que hay URL ___: ",url);
+    }else{
+      console.log("no hay URL, ",url);
+    }
+    res.json([]);
+    // getSingleRankin(id, function(data){
+        // res.json(data);
+    // });
 };
 
 getSingleRankin = function(id, callback){
 
     let client = new zerorpc.Client();
-    client.connect("tcp://127.0.0.1:4242");
+    client.connect("tcp://136.206.26.127:4242");
+    //THIS ID, IF IT ENDS IN .JSON IS FROM DATASET, IF NOT IS AN URL
     client.invoke("postServer", id, function(error, res, more) {
         if(error) {
             console.log("ERROR IN CALLBACK");
