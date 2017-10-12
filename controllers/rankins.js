@@ -10,18 +10,16 @@ exports.getRankinById = function (req, res, next) {
     }else{
       console.log("no hay URL, ",url);
     }
-    res.json([]);
-    // getSingleRankin(id, function(data){
-        // res.json(data);
-    // });
+    getSingleRankin(id, url, dataset, function(data){
+        res.json(data);
+    });
 };
 
-getSingleRankin = function(id, callback){
+getSingleRankin = function(id, url, dataset, callback){
 
     let client = new zerorpc.Client();
     client.connect("tcp://136.206.26.127:4242");
-    //THIS ID, IF IT ENDS IN .JSON IS FROM DATASET, IF NOT IS AN URL
-    client.invoke("postServer", id, function(error, res, more) {
+    client.invoke("postServer", id, url, dataset, function(error, res, more) {
         if(error) {
             console.log("ERROR IN CALLBACK");
             callback(error);
