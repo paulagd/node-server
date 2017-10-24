@@ -11,7 +11,6 @@ exports.getQimListParis = function (req, res, next) {
 };
 exports.getQimListInstre = function (req, res, next) {
     let qimList = require(`../qimLists/qimList_instre.json`);
-    // qimList = qimList.splice(0,56);
     res.send(qimList);
 };
 
