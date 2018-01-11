@@ -17,7 +17,7 @@ npm install --dev
 ```
 ---------------------------------------------------------------
 ```
-need to have the images of
+Server needs to have the images of
   - oxbuild_images
   - paris
   - instre

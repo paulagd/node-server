@@ -7,15 +7,26 @@ exports.getRankinById = function (req, res, next) {
     getSingleRankin(id, url, encoded_image, dataset, path, function(data){
         res.json(data);
     });
+
+    // let data_mocked = (
+    //   [{Image: 'all_souls_000000',IdSequence:1},
+    //   {Image: 'all_souls_000001',IdSequence:2},
+    //   {Image: 'all_souls_000002',IdSequence:3},
+    //   {Image: 'all_souls_000003',IdSequence:4},
+    //   {Image: 'all_souls_000005',IdSequence:5}]
+    // );
+    //
+    // console.log(data_mocked);
+    // res.json(data_mocked);
 };
 
 getSingleRankin = function(id, url, encoded_image, dataset, path, callback){
 
     let client = new zerorpc.Client();
-    client.connect("tcp://136.206.26.127:4243");
+    client.connect("tcp://localhost:4243");
     client.invoke("postServer", id, url, encoded_image, dataset, path, function(error, res, more) {
         if(error) {
-            console.log("ERROR IN CALLBACK");
+            console.log("ERROR IN CALLBACK", error);
             callback(error);
         }
 
