@@ -11,10 +11,11 @@ module.exports = function(app){
 
     app.post('/getRankinById/:id', rankins.getRankinById);
 
-    app.get('/getQimListOxford/', qimLists.getQimListOxford);
-    app.get('/getQimListParis/', qimLists.getQimListParis);
-    app.get('/getQimListInstre/', qimLists.getQimListInstre);
-    // app.post('/getTestList', sessions.algo);
+    app.post('/getIdFromPath/', qimLists.getIdFromPath);
+    app.get('/getPathfromId/:id', qimLists.getPathfromId);
+
+    app.post('/getQimListDataset/', qimLists.getQimListDataset);
+
     app.post('/sendFeedback_receiveRanking/:id', feedback.sendFeedback_receiveRanking);
 
 };
