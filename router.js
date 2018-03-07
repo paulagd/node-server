@@ -12,7 +12,7 @@ module.exports = function(app){
     app.post('/getRankinById/:id', rankins.getRankinById);
 
     app.post('/getIdFromPath/', qimLists.getIdFromPath);
-    app.get('/getPathfromId/:id', qimLists.getPathfromId);
+    app.post('/getPathfromId/:id', qimLists.getPathfromId);
 
     app.post('/getQimListDataset/', qimLists.getQimListDataset);
 
