@@ -1,5 +1,18 @@
 const zerorpc = require("zerorpc");
 
+
+exports.getQimListDataset = function (req, res, next) {
+    let {dataset} = req.body;
+    let qimList = require(`../qimLists/qimList_${dataset}.json`);
+    res.send(qimList);
+};
+
+exports.getIimlist = function (req, res, next) {
+    let {dataset} = req.body;
+    let imList = require(`../qimLists/imlist_${dataset}.json`);
+    res.send(imList);
+};
+
 // exports.getIdFromPath = function (req, res, next) {
 //
 //     let {path, dataset} = req.body;
@@ -15,7 +28,7 @@ const zerorpc = require("zerorpc");
 //       }
 //     }
 // };
-//
+
 // exports.getPathfromId = function (req, res, next) {
 //     let {id} = req.params;
 //
@@ -30,19 +43,6 @@ const zerorpc = require("zerorpc");
 //       }
 //     }
 // };
-
-exports.getQimListDataset = function (req, res, next) {
-    let {dataset} = req.body;
-    let qimList = require(`../qimLists/qimList_${dataset}.json`);
-    res.send(qimList);
-};
-
-exports.getIimlist = function (req, res, next) {
-    let {dataset} = req.body;
-    let imList = require(`../qimLists/imlist_${dataset}.json`);
-    res.send(imList);
-};
-
 
 
 

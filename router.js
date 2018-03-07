@@ -5,9 +5,11 @@ const qimLists = require('./controllers/qimLists');
 
 module.exports = function(app){
 
-    app.get('/getImageOxfordById/:id', images.getImageOxfordById);
-    app.get('/getImageParisById/:id', images.getImageParisById);
-    app.get('/getImageInstreById/', images.getImageInstreById);
+    // app.get('/getImageOxfordById/:id', images.getImageOxfordById);
+    // app.get('/getImageParisById/:id', images.getImageParisById);
+    // app.get('/getImageInstreById/:id', images.getImageInstreById);
+
+    app.get('/getImageById/:id', images.getImageById);
 
     app.post('/getRankinById/:id', rankins.getRankinById);
 

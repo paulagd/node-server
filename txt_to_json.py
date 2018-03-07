@@ -16,7 +16,9 @@ import json
 # NOTE: "image" will contain the path of the allocated image
 #       "id" will contain the unic id
 #
-# NOTE: Change the 'file_path' and the 'title_list' for a desired ones
+# NOTE: Change the 'file_path' and the 'title_list' for a desired ones.
+# IMPORTANT!!!!!! --> imlist should contain ALL the images of the system, including
+# the ones in qimList
 
 
 file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imlist.txt"
