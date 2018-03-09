@@ -9,6 +9,7 @@ exports.getQimListDataset = function (req, res, next) {
 
 exports.getIimlist = function (req, res, next) {
     let {dataset} = req.body;
+    dataset = 'instre';
     let imList = require(`../qimLists/imlist_${dataset}.json`);
     res.send(imList);
 };

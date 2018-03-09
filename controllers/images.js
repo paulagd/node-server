@@ -17,11 +17,21 @@ exports.getImageById = function (req, res, next) {
     let {id} = req.params;
     let {dataset} = req.query;
 
-    if(id.indexOf('.')== -1){ //if there is no '.jpg'
+    console.log("idd getImageById",id);
+
+    let check_instre = id;
+
+    // GET THE ID WITHOUT EXTENSION IN ORDER TO CHECK IF THERE IS A NUMBER (INSTRE)
+    if(id.indexOf(".jpg")!=-1){
+      check_instre = id.replace(".jpg","")
+    }
+
+    // CHECK IF THE ID IS FROM INSTRE (NUMBER)
+    if(parseInt(check_instre)){
       let imlist = require(`../qimLists/imlist_${dataset}.json`);
 
       for(var i = 0; i < imlist.length; i++){
-        if(imlist[i].id == id){
+        if(imlist[i].id == check_instre){
           id = imlist[i].image;
         }
       }

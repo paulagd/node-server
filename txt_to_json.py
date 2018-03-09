@@ -30,7 +30,7 @@ with open(file_path, "r") as f:
     file_list.append(line.strip())
 data = []
 for i, item in enumerate(file_list):
-    data.append({"image": item, "id": i})
+    data.append({"image": item, "id": i+1})  #starting id in 1
 
 with open("./qimLists/"+title_list+".json", 'w') as f:
     json.dump(data, f)
