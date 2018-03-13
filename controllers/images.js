@@ -33,6 +33,8 @@ exports.getImageById = function (req, res, next) {
           id = imlist[i].image;
         }
       }
+    } else {
+      id = (id.indexOf(".jpg")!=-1)? id : (id + '.jpg');
     }
 
     res.sendFile(id,{"root":`./${dataset}`});
