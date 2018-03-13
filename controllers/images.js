@@ -17,8 +17,6 @@ exports.getImageById = function (req, res, next) {
     let {id} = req.params;
     let {dataset} = req.query;
 
-    console.log("idd getImageById",id);
-
     let check_instre = id;
 
     // GET THE ID WITHOUT EXTENSION IN ORDER TO CHECK IF THERE IS A NUMBER (INSTRE)
