@@ -4,3 +4,5 @@ package-lock.json
 /paris
 /instre
 /ranks_best_oxford
+/documentation/*
+!/documentation/data

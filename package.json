@@ -22,6 +22,7 @@
     "zerorpc": "^0.9.7"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js",
+    "doc": "apidoc -o documentation -e node_modules"
   }
 }

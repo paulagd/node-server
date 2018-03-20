@@ -1,0 +1,13 @@
+{
+  "name": "node-server",
+  "version": "0.0.0",
+  "description": "A server for react-visualization-tool-CBIR project.",
+  "title": "Node server for CBIR system",
+  "header": {
+      "title": "General setup",
+      "filename": "documentation/data/apidoc_header.md"
+  },
+  "template": {
+  	"forceLanguage": "en"
+  }
+}
