@@ -24,22 +24,18 @@ Usage
 `node index.js`
 
 ---------------------------------------------------------------
-## CUSTOMIZATION
+## Documentation of the project
 
-### Datasets
-
-* The server needs to have the images from all the different datasets in folders.
-In this case, three folders are set up:
+Install apidoc
 ```
-  - oxbuild_images
-  - paris
-  - instre
-```
-* Each folder should contain all the images together without subfolders inside.
-However, this can just be done if each image has a unique id. When it is not the
-case as 'instre' dataset, a 'txt_to_json.py' script is provided in order to create
-an unique id for each image given the path of the subfolders. To use the script,
-just follow the instructions commented inside the file.
+npm install -g apidoc
 
-* The qimlists of each dataset should also be provided in 'json' format in order
-to show the main 'x_desired' examples in each dataset page.
+```
+
+Run documentation generation script:
+```
+npm run doc
+
+```
+
+> Open the file 'index.html' stored in the folder 'documentation' to see how to customize the system.

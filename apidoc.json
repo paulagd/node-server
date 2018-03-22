@@ -5,7 +5,11 @@
   "title": "Node server for CBIR system",
   "header": {
       "title": "General setup",
-      "filename": "documentation/data/apidoc_header.md"
+      "filename": "documentation/data/header.md"
+  },
+  "footer": {
+    "title": "Python connection",
+    "filename": "documentation/data/footer.md"
   },
   "template": {
   	"forceLanguage": "en"

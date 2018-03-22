@@ -1,17 +1,22 @@
-//allow to get an image from the client side
 
-// exports.getImageOxfordById = function (req, res, next) {
-//     res.sendFile(req.params.id,{"root":'./oxbuild_images'});
-// };
-// exports.getImageParisById = function (req, res, next) {
-//
-//     res.sendFile(req.params.id,{"root":'./paris'});
-// };
-// exports.getImageInstreById = function (req, res, next) {
-//     res.sendFile(req.query.path,{"root":'./instre'});
-// };
-
-// TODO: make a general form
+/**
+* @api {get} /getImageById/:id?dataset={}  getImageById
+* @apiName getImageById
+* @apiGroup API
+* @apiDescription Returns the image file given their id and the dataset where it is allocated.
+*
+*
+* @apiParam {String} id Id of the query.
+* @apiParam {String} dataset Dataset where the image is allocated.
+*
+* @apiSuccess {file} file Contains the file associated to the `id` image.
+*
+*
+* @apiExample {url} Request
+*
+*        http://localhost:5000/getImageById/oxford_000709.jpg?dataset=oxford
+*
+*/
 exports.getImageById = function (req, res, next) {
 
     let {id} = req.params;

@@ -1,5 +1,52 @@
 const zerorpc = require("zerorpc");
-//allow to get a rankin of an image from the client side
+
+/**
+* @api {post} /getRankinById/:id  getRankinById
+* @apiName getRankinById
+* @apiGroup API
+* @apiDescription Provides the rankin of an image from the client side.
+*
+*
+* @apiParam {String} id Id of the query
+* @apiParam {String} [url] Url of the image introduced to the system.
+* @apiParam {String} [encoded_image] Encoded image uploaded to the system.
+* @apiParam {String} dataset Dataset given
+* @apiParam {String} [path] Path given in the case of 'complicated' datasets as 'instre'.
+*
+* @apiSuccess {file} file Contains the file associated to the `id` image.
+*
+*
+* @apiExample {json} Request
+*
+*        {
+*          "dataset": "paris",
+*          "url": null,
+*          "encoded_image": null,
+*          "path": null
+*        }
+*
+* @apiExample {json} Success 200
+* [
+*  {
+*        "IdSequence": "0",
+*        "Image": "paris_general_002391"
+*    },
+*    {
+*        "IdSequence": "1",
+*        "Image": "paris_general_001620"
+*    },
+*
+*    ...
+*
+*    {
+*        "IdSequence": "5011",
+*        "Image": "paris_pompidou_000446"
+*    }
+* ]
+*
+*/
+
+
 exports.getRankinById = function (req, res, next) {
     let id = req.params.id;  //id = aaa.json  --> si no ve amb .json al final es una url
     let { dataset, url, encoded_image, path } = req.body;
@@ -7,22 +54,6 @@ exports.getRankinById = function (req, res, next) {
     // IN PYTHON SERVER CHECK IF THERE IS ID OR JUST 'unknown_id'
     if(id.indexOf("unknown_id")==0)
       id = id.replace(/.json$/,"");
-
-    // if(typeof(id)=="number"){ //if there is no '.jpg'
-    //   let imlist = require(`../qimLists/imlist_${dataset}.json`);
-    //
-    //   for(var i = 0; i < imlist.length; i++){
-    //     if(imlist[i].id == id){
-    //       path = imlist[i].image;
-    //
-    //       console.log("IIDDD INSTRE PERO DEBERIA SER .JSON?",path);
-    //       console.log("-----------",id);
-    //       console.log("-----------");
-    //       console.log("-----------");
-    //       // TODO... posar id = unknown_id???
-    //     }
-    //   }
-    // }
 
     getSingleRankin(id, url, encoded_image, dataset, path, function(data){
         res.json(data);

@@ -23,14 +23,14 @@ case as for example 'instre' dataset, follow the next steps:
    unique id for each image taking the path of the subfolders as a reference.
 
       >To use the script, just change the 'file_path' and the 'title_list' attributes
-      inside the script for a desired ones.
+      inside the script for a desired ones, where your `imlist.txt` is stored.
 
   2. Take into account that `imlist` should contain ALL the images of the system,
   including the ones in `qimList`
 
 
 * The `qimlist` of each dataset should also be provided in **json** format in order
-to show the N desired examples of each dataset page (the ones allocated in qimList).
+to show the **N** desired examples of each dataset page (the ones allocated in qimList).
 
 ----
 ## **Qimlist & imlist setup**
@@ -61,6 +61,7 @@ _Example of qimList structure_
       "id":"1249"
     }]
     ```
+    
   _Example of imlist structure_
 
       ```json
