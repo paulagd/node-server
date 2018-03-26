@@ -37,7 +37,7 @@ the `nodejs` server.
 
       - `postServer` method
 
-          This method receives all the parameters needed to compute the rankin
+          This method receives all the parameters needed to compute the ranking
           of a query given.
 
           First of all, you can define the method like:
@@ -47,7 +47,7 @@ the `nodejs` server.
 
           ```
 
-          Then, you can code whatever you need to compute the rankin. Finally, you
+          Then, you can code whatever you need to compute the ranking. Finally, you
           should return a `json structure` with the keys `IdSequence` and `Image` as
           it can be seen in the following example.
 
@@ -74,7 +74,7 @@ the `nodejs` server.
       - `postFeedback_And_Update` method
 
           This method receives all the parameters needed to get the feedback of the user.
-          You should return the updated rankin after computing the desired experiments.
+          You should return the updated ranking after computing the desired experiments.
 
           First of all, you can define the method like:
 
@@ -104,5 +104,5 @@ the `nodejs` server.
            }
           ```
 
-          > The `json` field will contain the rankin updated and it should have the same
+          > The `json` field will contain the ranking updated and it should have the same
           structure as in the method above.

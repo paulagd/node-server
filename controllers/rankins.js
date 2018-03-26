@@ -55,8 +55,12 @@ exports.getRankinById = function (req, res, next) {
     if(id.indexOf("unknown_id")==0)
       id = id.replace(/.json$/,"");
 
-    getSingleRankin(id, url, encoded_image, dataset, path, function(data){
-        res.json(data);
+    getSingleRankin(id, url, encoded_image, dataset, path, function(err,data){
+        if(err){
+          res.status(400).json(err);
+        } else {
+          res.json(data);
+        }
     });
 };
 
@@ -65,13 +69,14 @@ getSingleRankin = function(id, url, encoded_image, dataset, path, callback){
     let client = new zerorpc.Client({heartbeatInterval: 100000});
     client.connect("tcp://localhost:4243");
     client.invoke("postServer", id, url, encoded_image, dataset, path, function(error, res, more) {
+
         if(error) {
-            console.log("ERROR IN CALLBACK", error);
-            callback(error);
+            console.log("ERROR IN CALLBACK");
+            callback(new Error(error), null);
         }
-        if(!more) {
+        else if(!more) {
             console.log("CALLBACK DONE");
-            callback(res);
+            callback(null,res);
         }
     })
 };
