@@ -93,8 +93,13 @@ exports.sendFeedback_receiveRanking = function (req, res, next) {
     let id = req.params.id;  //id = aaa.json  --> si no ve amb .json al final es una url
     let { dataset, url, encoded_image, path, similar_list, mode } = req.body;
 
-    postFeedback(id, url, encoded_image, dataset, path, similar_list, mode, function(data){
+    postFeedback(id, url, encoded_image, dataset, path, similar_list, mode, function(err, data){
+
+      if(err){
+        res.status(500).send({messageError:"Error in python server. Check the log of the nodejs server console command for more information."});
+      } else {
         res.json(data);
+      }
     });
 };
 
@@ -104,13 +109,12 @@ postFeedback = function(id, url, encoded_image, dataset, path, similar_list, mod
     client.connect("tcp://localhost:4243");
     client.invoke("postFeedback_And_Update", id, url, encoded_image, dataset, path, similar_list, mode, function(error, res, more) {
         if(error) {
-            console.log("ERROR IN CALLBACK");
-            callback(error);
+            console.log("ERROR IN CALLBACK", error);
+            callback(error, null);
         }
-
-        if(!more) {
+        else if(!more) {
             console.log("CALLBACK DONE");
-            callback(res);
+            callback(null,res);
         }
     })
 };

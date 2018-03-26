@@ -57,7 +57,7 @@ exports.getRankinById = function (req, res, next) {
 
     getSingleRankin(id, url, encoded_image, dataset, path, function(err,data){
         if(err){
-          res.status(400).json(err);
+          res.status(500).send({messageError:"Error in python server. Check the log of the nodejs server console command for more information."});
         } else {
           res.json(data);
         }
@@ -71,7 +71,7 @@ getSingleRankin = function(id, url, encoded_image, dataset, path, callback){
     client.invoke("postServer", id, url, encoded_image, dataset, path, function(error, res, more) {
 
         if(error) {
-            console.log("ERROR IN CALLBACK");
+            console.log("ERROR IN CALLBACK", error);
             callback(new Error(error), null);
         }
         else if(!more) {
