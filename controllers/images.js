@@ -28,11 +28,9 @@ exports.getImageById = function (req, res, next) {
     if(id.indexOf(".jpg")!=-1){
       check_instre = id.replace(".jpg","")
     }
-
     // CHECK IF THE ID IS FROM INSTRE (NUMBER)
-    if(parseInt(check_instre)){
+    if(parseInt(check_instre) && (dataset=="instre")){  //MODIFIED!
       let imlist = require(`../qimLists/imlist_${dataset}.json`);
-
       for(var i = 0; i < imlist.length; i++){
         if(imlist[i].id == check_instre){
           id = imlist[i].image;

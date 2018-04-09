@@ -17,8 +17,16 @@ import json
 #       "id" will contain the unic id
 #
 
-file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imlist.txt"
-title_list = "imlist_instre"
+# IDEA:FOR A QIMLIST: (list to be shown as example)
+file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imList_UTK.txt"
+title_list = "qimList_UTK"
+id_start = 0
+
+# IDEA:FOR A IMLIST:
+# file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imList_UTK.txt"
+# title_list = "imlist_UTK"
+# id_start = 1
+
 
 file_list = []
 with open(file_path, "r") as f:
@@ -26,7 +34,7 @@ with open(file_path, "r") as f:
     file_list.append(line.strip())
 data = []
 for i, item in enumerate(file_list):
-    data.append({"image": item, "id": i+1})  #starting id in 1
+    data.append({"image": item, "id": i+id_start})  #starting id in 1
 
 with open("./qimLists/"+title_list+".json", 'w') as f:
     json.dump(data, f)
