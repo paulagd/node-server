@@ -1,8 +1,9 @@
 {
   "name": "node-server",
   "version": "0.0.0",
-  "description": "A server for react-visualization-tool-CBIR project.",
+  "description": "A server for react-visualization-tool-CBIR (https://github.com/paulagd/react-visualization-tool-CBIR.git) project.",
   "title": "Node server for CBIR system",
+  "url": "https://github.com/paulagd/node-server.git",
   "header": {
       "title": "General setup",
       "filename": "documentation/data/header.md"

@@ -46,7 +46,6 @@ const zerorpc = require("zerorpc");
 *
 */
 
-
 exports.getRankinById = function (req, res, next) {
     let id = req.params.id;  //id = aaa.json  --> si no ve amb .json al final es una url
     let { dataset, url, encoded_image, path } = req.body;
@@ -57,8 +56,16 @@ exports.getRankinById = function (req, res, next) {
 
     getSingleRankin(id, url, encoded_image, dataset, path, function(err,data){
         if(err){
-          res.status(500).send({messageError:"Error in python server. Check the log of the nodejs server console command for more information."});
+          let messageError = (err.stack.indexOf("ValueError")!= -1) ? (err.stack.split(":")[2].split('\n')[0]) :
+                  "Error in python server. Check the log of the nodejs server console command for more information.";
+
+          res.status(500).send({messageError});
         } else {
+          data = data.map((obj)=>{
+            let newJson = obj;
+            newJson.Image = obj.Image.toString();
+            return newJson;
+          });
           res.json(data);
         }
     });

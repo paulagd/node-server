@@ -18,13 +18,13 @@ import json
 #
 
 # IDEA:FOR A QIMLIST: (list to be shown as example)
-file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imList_UTK.txt"
-title_list = "qimList_UTK"
+file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/rand_qimList_groups.txt"
+title_list = "qimList_groups"
 id_start = 0
 
 # IDEA:FOR A IMLIST:
-# file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imList_UTK.txt"
-# title_list = "imlist_UTK"
+# file_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/imList_groups.txt"
+# title_list = "imlist_groups"
 # id_start = 1
 
 

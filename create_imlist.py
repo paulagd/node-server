@@ -2,10 +2,10 @@ import random
 import os
 
 # IDEA: THIS SCRIPT CREATES A IMLIST AND WITH OPTION OF A RANDOM QIMLIST in TXT format
-folder_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/utk"
+folder_path = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/groups"
 
-title_imlist = "imlist_UTK"
-title_random_qimlist = "rand_qimList_UTK"
+title_imlist = "imlist_groups"
+title_random_qimlist = "rand_qimList_groups"
 imlist = []
 
 # take the .txt file (option to append more than one and unify them)

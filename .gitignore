@@ -7,3 +7,4 @@ package-lock.json
 /documentation/*
 !/documentation/data
 /utk
+/groups
