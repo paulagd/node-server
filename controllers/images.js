@@ -22,23 +22,12 @@ exports.getImageById = function (req, res, next) {
     let {id} = req.params;
     let {dataset} = req.query;
 
-    let check_instre = id;
-
     // GET THE ID WITHOUT EXTENSION IN ORDER TO CHECK IF THERE IS A NUMBER (INSTRE)
     if(id.indexOf(".jpg")!=-1){
-      check_instre = id.replace(".jpg","")
+      id = id.replace(".jpg","")
     }
-    // CHECK IF THE ID IS FROM INSTRE (NUMBER)
-    if(parseInt(check_instre) && (dataset=="instre")){  //MODIFIED!
-      let imlist = require(`../qimLists/imlist_${dataset}.json`);
-      for(var i = 0; i < imlist.length; i++){
-        if(imlist[i].id == check_instre){
-          id = imlist[i].image;
-        }
-      }
-    } else {
-      id = (id.indexOf(".jpg")!=-1)? id : (id + '.jpg');
-    }
+
+    id = (id.indexOf(".jpg")!=-1)? id : (id + '.jpg');
 
     res.sendFile(id,{"root":`./${dataset}`});
 };

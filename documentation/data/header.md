@@ -20,7 +20,7 @@ bar of the UI. They should be in lowercase.
 
 * Each folder should contain all the images together without subfolders inside.
 However, this can just be done if each image has a unique id. When it is not the
-case as for example 'instre' dataset, follow the next steps:
+case, as for example 'instre' dataset, follow the next steps:
 
   1. Use the `txt_to_json.py` script provided in this code in order to create a
    unique id for each image taking the path of the subfolders as a reference.

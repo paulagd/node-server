@@ -49,6 +49,7 @@ const zerorpc = require("zerorpc");
 exports.getRankinById = function (req, res, next) {
     let id = req.params.id;  //id = aaa.json  --> si no ve amb .json al final es una url
     let { dataset, url, encoded_image, path } = req.body;
+    console.log("id",id);
 
     // IN PYTHON SERVER CHECK IF THERE IS ID OR JUST 'unknown_id'
     if(id.indexOf("unknown_id")==0)

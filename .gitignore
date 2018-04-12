@@ -6,5 +6,8 @@ package-lock.json
 /ranks_best_oxford
 /documentation/*
 !/documentation/data
+/generated_txt_lists
 /utk
 /groups
+
+/instre_subfolders
