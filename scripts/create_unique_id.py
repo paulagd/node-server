@@ -41,10 +41,3 @@ for files in names_list:
     name = files.split(folder_path.split("/")[-1])[1].replace("/", "__").strip()[2:] #REMOVE 2 __ OF THE FIRST POSITION
     if files.endswith(".jpg"):
         shutil.copy(files, os.path.join(new_path , name))
-
-#
-# for n in names_list:
-#     name = n.split('instre')[1].replace("/", "_").strip()[1:]
-#     img = cv2.imread(n, 1)
-#     cv2.imwrite(os.path.join(new_path , name), img)
-#     cv2.waitKey(0)

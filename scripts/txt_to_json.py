@@ -1,18 +1,5 @@
 import json
 
-# IDEA: THIS SCRIPT WILL PROVIDE A JSON WITH THE DESIRED STRUCTURE FROM A TXT FILE WITH
-#       A LIST OF THE NAME OF IMAGES IN THE DATASET (ITS PATH ALLOCATION)
-#       ** THE DESIRED STRUCTURE IS :
-#           [{
-#               "image":"INSTRE-S1/01a_canada_book/013.jpg",
-#               "id":"0"
-#           },{
-#               "image":"INSTRE-S1/01a_canada_book/062.jpg",
-#               "id":"1"
-#           },{
-#               ...
-#           }]
-#
 # NOTE: "image" --> will contain the path of the allocated image
 #       "id"  ---->  will contain a unic id
 #
