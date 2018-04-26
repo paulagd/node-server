@@ -3,7 +3,7 @@
 * The server needs to have the images from all the different datasets different folders.
 Using our case as an example, three folders are set up:
 ```
-  - oxbuild_images
+  - oxford
   - paris
   - instre
 ```
