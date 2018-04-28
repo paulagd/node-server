@@ -4,8 +4,8 @@ import os
 # IDEA: THIS SCRIPT CREATES A IMLIST AND WITH OPTION OF A RANDOM QIMLIST in TXT format
 folder_path_images = "/Users/paulagomezduran/Desktop/TFG_NO_GUARDAT/node-server/instre"
 
-title_imlist = "imlist_instre"
-title_random_qimlist = "rand_qimList_instre"
+title_imlist = "instre"
+title_random_qimlist = "rand_qimList_paris"
 imlist = []
 
 # imlist = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f[0] != '.']

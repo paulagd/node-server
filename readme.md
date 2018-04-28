@@ -1,6 +1,20 @@
 # node-server
 ---
 A server for the tool to visualize the results of a image retrieval engine system.
+
+> Repositories related:
+>
+> * [React visualization tool for CBIR](https://github.com/paulagd/react-visualization-tool-CBIR)
+> * [Python CBIR random example](https://bitbucket.org/emohe/python-server-dummy)
+---
+## Requirements
+
+* Nodejs v6.11.3
+* npm v5.4.2
+* Python 2.7
+
+> In the [web application repository](https://github.com/paulagd/react-visualization-tool-CBIR) you can find the steps to install them.
+
 ---
 ## Getting started
 ---
