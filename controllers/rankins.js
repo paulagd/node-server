@@ -62,12 +62,15 @@ exports.getRankinById = function (req, res, next) {
 
           res.status(500).send({messageError});
         } else {
-          data = data.map((obj)=>{
+          let json = data.json.map((obj)=>{
             let newJson = obj;
             newJson.Image = obj.Image.toString();
             return newJson;
           });
-          res.json(data);
+
+          let result = {'mAP': data.mAP, 'json': json}
+
+          res.json(result);
         }
     });
 };
