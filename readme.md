@@ -2,10 +2,6 @@
 ---
 A server for the tool to visualize the results of a image retrieval engine system.
 
-> Repositories related:
->
-> * [React visualization tool for CBIR](https://github.com/paulagd/react-visualization-tool-CBIR)
-> * [Python CBIR random example](https://bitbucket.org/emohe/python-server-dummy)
 ---
 ## Requirements
 
@@ -14,6 +10,20 @@ A server for the tool to visualize the results of a image retrieval engine syste
 * Python 2.7
 
 > In the [web application repository](https://github.com/paulagd/react-visualization-tool-CBIR) you can find the steps to install them.
+
+---
+### Repositories related:
+>
+> * [React visualization tool for CBIR](https://github.com/paulagd/react-visualization-tool-CBIR)
+> * [python-server-salbow](https://bitbucket.org/emohe/python-server-salbow/src/master/)
+> * [python-server-dummy](https://bitbucket.org/emohe/python-server-dummy/src/master/)
+
+### Images storage
+
+1. Download a dataset and store all its images into ONE single folder named ${NAME_OF_THE_DATASET}.
+2. Place the folder in the main root directory of this project.
+
+> In the case of oxford, paris and instre dataset you can download the folders ready to use [here](https://drive.google.com/drive/folders/178bcx_trf4BZMUS8VOUpKh7JcqhZxC7C?usp=sharing).
 
 ---
 ## Getting started
@@ -38,7 +48,7 @@ Usage
 `node index.js`
 
 ---------------------------------------------------------------
-## Documentation of the project
+## Specific documentation of the project
 
 Install apidoc
 ```

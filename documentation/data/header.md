@@ -11,41 +11,39 @@ Using our case as an example, three folders are set up:
 >
 > The name of the folder should be the same name that you will put in the navigation
 bar of the UI. They should be in lowercase.
->
-> To know how to distribute them inside a folder read the point below.  
 
----
 
 #### **Inside each dataset folder**
 
 * Each folder should contain all the images together without subfolders inside.
 However, this can just be done if each image has a unique id. When it is not the
-case, as for example 'instre' dataset, you can use our provided script in order
-to achieve the desired structure.
+case, as for example 'instre' dataset, we provide a script which transform the id
+of each image by taking the path as a reference.
 
-  1. `create_unique_id.py`
+  1. `create_unique_id.py` ${YOUR_PATH_FOLDER} ${NEW_PATH_FOLDER}
 
-      This scripts generates a new folder with all the images inside, changing their
-      id for the whole path. It changes all the slash (`/`) for a double underscore (`__`).
+      * YOUR_PATH_FOLDER --> path of the dataset in the raw structure.
+      * NEW_PATH_FOLDER ---> empty folder where the images will be copied in the desired structure.
+      > The ${NEW_PATH_FOLDER} should be already existing.
 
-      > If your system uses the full path as a identifier of the image, this conversion
-      can be reversed in your system when receiving the id's. An example of that is
-      provided in our python-test-server.
+      This scripts copy all the images inside the ${NEW_PATH_FOLDER}, changing their
+      id for the whole path. It changes all the slash (`/`) for a double underscore (`__`)
+      for a better web reading.
 
-      * The only parameters to be modified are `folder_path` and `new_path`. They are
-      at the top of the script. The first one is the path where your images are
-      currently stored and the second one is where you would like to store them.
-      Here you can see an example:
+      > It should be taken into account that the application will give you these id's
+      in this format, thus the reversed conversion should be done in your code.
+      >
+      > An example of it can be seen in the `python-server-dummy`.
 
-          ```
-          folder_path = "/Users/paulagomezduran/Desktop/node-server/instre_subfolders"
-          new_path = "/Users/paulagomezduran/Desktop/node-server/instre"
-          ```
+      ```
+      python create_unique_id.py ${YOUR_PATH_FOLDER} ${NEW_PATH_FOLDER}
+      ```
+
 ----
 
 ## **Qimlist & imlist setup**
 
-The server needs a folder called `qimLists` that will contain all the main example qimList
+* The server needs a folder called `qimLists` that will contain all the main example qimList
 and the imlists needed (in **json** format, as you can see below).
 
 > **Note**: Just a remainder for `qimList` and `imlist` vocabulary:
@@ -60,24 +58,22 @@ and the imlists needed (in **json** format, as you can see below).
     of the imlist file should be `imlist_{name_of_dataset}`.
 
 
-To generate this lists, two more scripts are provided:
+* To generate this lists, two more scripts are provided:
 
-  2. `create_imlist.py`
+  2. `create_lists.py`
 
-      This script generates two `.txt` files. The first one is an `imlist`
-      containing all the id of the images in the whole dataset. The second one is
-      a random `qimList` which will store 55 random id's from some images.
+      This script generates two `.txt` files which correspond to a random imlist and a random qimlist
+      in case that you don't have any of them generated.
 
-      The only thing to modify is the path containing all the images and the desired
-      titles. You can see an example in the following code:
+      You should notice that this script will just generate random qimList and imlist, so it won't be
+      useful if you are using a CBIR with a specific order for thr image descriptors. In that case,
+      you should use your own lists. However, it can be useful if you want to connect just a dataset
+      into the system in order to just display it and explore it.
 
-      > The lists will be stored in a folder called `generated_txt_lists`.
+      * The lists will be stored in a folder called `generated_txt_lists`.
 
       ```
-      folder_path_images = "/Users/paulagomezduran/Desktop/node-server/instre"
-
-      title_imlist = "imlist_instre"
-      title_random_qimlist = "rand_qimList_instre"
+      python create_lists.py ${YOUR_FOLDER_PATH_IMAGES} ${DESIRED_QIMLIST_TITLE} ${DESIRED_IMLIST_TITLE}
       ```
 
       > If you have some preferences in the images that you would like to store
@@ -85,34 +81,36 @@ To generate this lists, two more scripts are provided:
       for the random ones.
       >
       > Another option for building a `qimList` would be to use the same `imlist`, if we
-       want to display all the images in the dataset (it reqires to have a qimList name).
+       want to display all the images in the dataset (you should just have the imlist
+       with the name of `qimlist`).
 
   3. `txt_to_json.py`
 
-      This script is provided in order to convert the `.txt` files into `.json`
-      format to fit in the project. This script will create a unique id for each
-      image and it will appear in the following structure:
+      This script will convert the `.txt` files into `.json` format in order to
+      fit in the project structure. It will create a unique id for each image thus
+      ending up with a list with the following structure:
 
 
          [{
-             "image":"INSTRE-S1/01a_canada_book/013.jpg",
+             "image":"radcliffe_camera_000519.jpg",
              "id":"0"
          },{
-             "image":"INSTRE-S1/01a_canada_book/062.jpg",
+             "image":"hertford_000027.jpg",
              "id":"1"
          },{
              ...
          }]
 
 
-      To use the script, just change the `file_path` and the `title_list` attributes
-      inside the script for a desired ones.
+      ```
+      python txt_to_json.py ${YOUR_FILE_PATH} ${DESIRED_LIST_TITLE}
+      ```
+      > It will also change your id's if they contain `"/"` into `"__"`
+      >
+      > The json list will be stored in the `qimLists` folder which is in the root directory.
 
-      > You can use the subsection `#IDEA: FOR A IMLIST` to convert an `imlist` and
-      the other section to convert a `qimList`.
 
-_Example of qimList structure_
-
+_Example of qimList/imlist structure_
 
     [{
       "image":"INSTRE-S1/01a_canada_book/013.jpg",
@@ -125,20 +123,4 @@ _Example of qimList structure_
     {
       "image":"INSTRE-M/50/107.jpg",
       "id":"1249"
-    }]
-
-
-  _Example of imlist structure_
-
-    [{
-      "image":"INSTRE-S1/01a_canada_book/001.jpg",
-      "id":"1"
-    },{
-      "image":"INSTRE-S1/01a_canada_book/002.jpg",
-      "id":"2"
-    },
-    ...
-    {
-      "image":"INSTRE-M/50/118.jpg",
-      "id":"28543"
     }]
