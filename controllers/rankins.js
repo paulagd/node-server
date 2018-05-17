@@ -78,7 +78,7 @@ exports.getRankinById = function (req, res, next) {
 getSingleRankin = function(id, url, encoded_image, dataset, path, callback){
 
     let client = new zerorpc.Client({heartbeatInterval: 100000});
-    client.connect("tcp://localhost:4243");
+    client.connect("tcp://0.0.0.0:4243");
     client.invoke("postServer", id, url, encoded_image, dataset, path, function(error, res, more) {
 
         if(error) {

@@ -106,7 +106,7 @@ exports.sendFeedback_receiveRanking = function (req, res, next) {
 postFeedback = function(id, url, encoded_image, dataset, path, similar_list, mode, callback){
 
     let client = new zerorpc.Client();
-    client.connect("tcp://localhost:4243");
+    client.connect("tcp://0.0.0.0:4243");
     client.invoke("postFeedback_And_Update", id, url, encoded_image, dataset, path, similar_list, mode, function(error, res, more) {
         if(error) {
             console.log("ERROR IN CALLBACK", error);
