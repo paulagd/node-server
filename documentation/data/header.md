@@ -20,6 +20,8 @@ However, this can just be done if each image has a unique id. When it is not the
 case, as for example 'instre' dataset, we provide a script which transform the id
 of each image by taking the path as a reference.
 
+> In case of `oxford`, `paris` and `instre` you can download the folders ready [here](https://drive.google.com/drive/folders/178bcx_trf4BZMUS8VOUpKh7JcqhZxC7C).
+
   1. `create_unique_id.py` ${YOUR_PATH_FOLDER} ${NEW_PATH_FOLDER}
 
       * YOUR_PATH_FOLDER --> path of the dataset in the raw structure.

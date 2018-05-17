@@ -9,7 +9,7 @@ A server for the tool to visualize the results of a image retrieval engine syste
 * npm v5.4.2
 * Python 2.7
 
-> In the [web application repository](https://github.com/paulagd/react-visualization-tool-CBIR) you can find the steps to install them.
+> In the [React visualization tool for CBIR](https://github.com/paulagd/react-visualization-tool-CBIR) you can find the steps to install all the dependences.
 
 ---
 ### Repositories related:
